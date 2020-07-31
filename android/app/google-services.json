@@ -1,35 +1,42 @@
 {
   "project_info": {
-    "project_number": "1012865006211",
-    "firebase_url": "https://sos-app-64997.firebaseio.com",
-    "project_id": "sos-app-64997",
-    "storage_bucket": "sos-app-64997.appspot.com"
+    "project_number": "195586430597",
+    "firebase_url": "https://sos-app-e6797.firebaseio.com",
+    "project_id": "sos-app-e6797",
+    "storage_bucket": "sos-app-e6797.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1012865006211:android:cded0ebe8cdf51cd06b9b6",
+        "mobilesdk_app_id": "1:195586430597:android:a4b09d1dfe61e310d67bec",
         "android_client_info": {
           "package_name": "com.example.sos_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1012865006211-g4qten3coansobl8uhff3jjfld8942kc.apps.googleusercontent.com",
+          "client_id": "195586430597-nbais7suis45rd2m3so74i8m5aepspls.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA62o9GOeBbEGNmg1WLa6_KyHaDM63ak0s"
+          "current_key": "AIzaSyAvGB4lx7vNg8Nrd3qOd_uUY0SEfsvwIy0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1012865006211-g4qten3coansobl8uhff3jjfld8942kc.apps.googleusercontent.com",
+              "client_id": "195586430597-nbais7suis45rd2m3so74i8m5aepspls.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "195586430597-v4kq7k6171vjd6jvmd4pfqkoohb1h64a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "sssss"
+              }
             }
           ]
         }
