@@ -281,6 +281,22 @@ It is possible to run the android emulator on MacOS. The setup is just like the 
 13. An emulator should open, you will see Android booting up
 14. Click the green Play button, if you have no coding errors the app will display on the emulator
 
+## How to share your work on Github
+The way git works is there is a local repository that you commit your changes to first and then you push those changes to the remote repository (GitHub).
+
+**Local Commit**:
+1. VCS > Commit
+2. Enter a commit message
+    * Don't be lame and have vague commit messages. Tell others what you are changing.
+3. Click Commit
+4. It may ask for your GitHub username and email. Just use the same for your GitHub account
+
+**Remote Push**:
+1. VCS > Git > Push
+2. Click Login In with GitHub...
+3. Input your username, password and authenticator code when asked
+    * You will need to be added as a contributor to the `SOScodeteam` with write permissions to the `SOS_App`
+
 ## Project Structure
 **Folders**
 - **lib**: Where all the coding for the app is done.
