@@ -2,16 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:sos_app/models/user.dart';
 import 'package:sos_app/services/database.dart';
+import 'package:sos_app/constants.dart' as constant;
 
 class AuthController extends GetxController {
   FirebaseAuth _auth = FirebaseAuth.instance; //Entry into firebase auth
   Rx<FirebaseUser> _firebaseUser =
       Rx<FirebaseUser>(); //Observable firebase user object
 
-  String get email => _firebaseUser.value
-      ?.email; //This will automatically be updated as the auth state changes
-  String get uid => _firebaseUser
-      .value?.uid; //This will automatically be update as the auth state changes
+  String get email => _firebaseUser.value?.email; //This will automatically be updated as the auth state changes
+  String get uid => _firebaseUser.value?.uid; //This will automatically be update as the auth state changes
 
   @override
   onInit() {
@@ -33,7 +32,7 @@ class AuthController extends GetxController {
       UserModel user = UserModel(id: this.uid, email: this.email);
       await Database().writeUser(user);
 
-      Get.offAllNamed('/'); //Re check if the user is authenticated
+      Get.offAllNamed(constant.Route.root); //Re check if the user is authenticated
     } catch (e) {
       Get.back(); //Closes the loading progress circle
       inform(e, "Error creating account");
@@ -47,7 +46,7 @@ class AuthController extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(
           email: email.trim(), password: password);
-      Get.offAllNamed('/'); //Re check if the user is authenticated
+      Get.offAllNamed(constant.Route.root); //Re check if the user is authenticated
     } catch (e) {
       Get.back(); //Closes the loading progress circle
       inform(e, "Error signing in");
@@ -60,7 +59,7 @@ class AuthController extends GetxController {
   void signOut() async {
     try {
       await _auth.signOut();
-      Get.offAllNamed('/'); //Re check if the user is authenticated
+      Get.offAllNamed(constant.Route.root); //Re check if the user is authenticated
     } catch (e) {
       Get.back();
       inform(e, "Error signing out");
@@ -72,9 +71,12 @@ class AuthController extends GetxController {
 If errors occur, display them in a nice format
  */
 void inform(e, String msg) {
+  bool isError = e is Error;
+  String data = isError ? e.message : e;
+
   Get.snackbar(
     msg,
-    e.message,
+    data,
     snackPosition: SnackPosition.BOTTOM,
   );
 }
