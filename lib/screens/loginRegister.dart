@@ -32,13 +32,13 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               logoWidget(),
-              SizedBox(height: 40),
+              SizedBox(height: 2),
               TextFormField(
                 decoration: InputDecoration(hintText: "Email"),
                 controller: emailController,
               ),
               SizedBox(
-                height: 40,
+                height: 2,
               ),
               TextFormField(
                 decoration: InputDecoration(hintText: "Password"),

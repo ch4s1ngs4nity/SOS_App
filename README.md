@@ -1,10 +1,10 @@
-
 # SOS_App
 This project aims to provide a feedback system for SOS.
 
 Getting Started:
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- [Dart Language Tour](https://dart.dev/guides/language/language-tour)
 
 Useful Resources:
 - [Flutter API](https://api.flutter.dev/index.html)
@@ -14,9 +14,25 @@ Useful Resources:
 
 Dependency Reference:
 - [Get](https://pub.dev/packages/get)
+- [Firebase Core](https://pub.dev/packages/firebase_core)
 - [Firebase Auth](https://pub.dev/packages/firebase_auth)
 - [Cloud Firestore](https://pub.dev/packages/cloud_firestore)
 - [Flutter Launcher Icons](https://pub.dev/packages/flutter_launcher_icons)
+
+Table of Contents:
+- [Install Git](#install-git)
+- [Install Dart](#install-dart)
+- [Install Flutter](#install-flutter)
+- [Update Path Variable](#update-path-variable)
+- [Verify Path Variable](#verify-path-variable)
+- [Install Android Studio](#install-android-studio)
+- [Install Coca Pods](#install-coca-pods-macos-only)
+- [Verify Flutter Environment](#verify-flutter-environment)
+- [Clone the Repository](#clone-the-repository)
+- [Setup the Project in Android Studio](#setup-the-project-in-android-studio)
+- [Setup the Emulator](#setup-the-emulator)
+- [Save Changes to GitHub](#save-changes-to-github)
+- [Project Structure](#project-structure)
 
 ## Install Git
 Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
@@ -31,6 +47,8 @@ Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 1. You may want to change the default text editor (Vim is hard)
 2. All other default installer settings are fine
 
+
+[Top](#sos_app)
 ## Install Dart
 Dart: https://dart.dev/tools/sdk/archive
 
@@ -45,6 +63,7 @@ Dart: https://dart.dev/tools/sdk/archive
 1. Dart is just an archive you need to extract
 2. Create the directory `C:\src` and extract dart inside of this folder
 
+[Top](#sos_app)
 ## Install Flutter
 Flutter: https://flutter.dev/docs/get-started/install
 
@@ -60,7 +79,8 @@ Flutter: https://flutter.dev/docs/get-started/install
 2. Flutter is just an archive you need to extract
 3. Extract Flutter into `C:\src`
 
-## Update your Path Variable
+[Top](#sos_app)
+## Update Path Variable
 **MacOS**: The OS manages path variables through a terminal configuration file. From Catalina on Mac uses ZSH as its terminal. Prior to Catalina it uses BASH.
 
 Determine your shell type:
@@ -100,6 +120,7 @@ If you know your shell type:
 24. Click OK
 25. Close command prompt for changes to take effect
 
+[Top](#sos_app)
 ## Verify Path Variable
 **MacOS**:
 1. Click Launchpad
@@ -122,6 +143,7 @@ If you know your shell type:
 `C:\src\flutter\bin\flutter`
 `C:\src\flutter\bin\flutter.bat`
 
+[Top](#sos_app)
 ## Install Android Studio
 Android Studio: https://developer.android.com/studio#downloads
 
@@ -152,6 +174,7 @@ Android Studio: https://developer.android.com/studio#downloads
 9. Click Restart IDE
 10. Click Restart
 
+[Top](#sos_app)
 ## Install Coca Pods (MacOS Only)
 1. Click Launchpad
 2. Type `terminal`
@@ -162,6 +185,7 @@ Android Studio: https://developer.android.com/studio#downloads
 7. Type `pod setup`
 8. Press Enter
 
+[Top](#sos_app)
 ## Verify Flutter Environment
 **MacOS**:
 1. Click Launchpad
@@ -189,6 +213,7 @@ Android Studio: https://developer.android.com/studio#downloads
 20. Press Enter
 21. Your only error should be about connected devices
 
+[Top](#sos_app)
 ## Clone the Repository
 **MacOS**:
 1. Create a folder on your `Desktop` called `SOS_DEV`
@@ -210,7 +235,7 @@ Android Studio: https://developer.android.com/studio#downloads
 7. Type `git clone https://github.com/SOScodeteam/sos_app`
 8. In your folder `SOS_DEV` on the `Desktop` you should now have a folder called `sos_app`
 
-
+[Top](#sos_app)
 ## Setup the Project in Android Studio
 **MacOS**:
 1. Open Android Studio
@@ -245,7 +270,8 @@ Android Studio: https://developer.android.com/studio#downloads
 12. Click Tools > Flutter > Flutter Pub Get
 13. Click Tools > Flutter > Flutter Upgrade
 
-## Setup an Emulator
+[Top](#sos_app)
+## Setup the Emulator
 It is possible to run the android emulator on MacOS. The setup is just like the windows setup below. iOS emulators on Windows are not possible.
 
 **MacOS (iOS)**:
@@ -281,8 +307,9 @@ It is possible to run the android emulator on MacOS. The setup is just like the 
 13. An emulator should open, you will see Android booting up
 14. Click the green Play button, if you have no coding errors the app will display on the emulator
 
-## How to share your work on Github
-The way git works is there is a local repository that you commit your changes to first and then you push those changes to the remote repository (GitHub).
+[Top](#sos_app)
+## Save changes to GitHub
+The way git works is there is a local repository (your computer) that you commit your changes to first and then you push those commits to the remote repository (GitHub).
 
 **Local Commit**:
 1. VCS > Commit
@@ -295,11 +322,12 @@ The way git works is there is a local repository that you commit your changes to
 **Remote Push**:
 1. VCS > Git > Push
 2. Click Login In with GitHub...
-3. Input your username, password and authenticator code when asked
+3. Input your username, password and authenticator code if asked
     * You will need to be added as a contributor to the `SOScodeteam` with write permissions to the `SOS_App`
 4. You should see the local commits that have not been pushed to the remote repository
 5. Click Push
 
+[Top](#sos_app)
 ## Project Structure
 **Folders**
 - **lib**: Where all the coding for the app is done.
