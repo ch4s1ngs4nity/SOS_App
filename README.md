@@ -290,6 +290,7 @@ The way git works is there is a local repository that you commit your changes to
     * Don't be lame and have vague commit messages. Tell others what you are changing.
 3. Click Commit
 4. It may ask for your GitHub username and email. Just use the same for your GitHub account
+5. Click Set and Commit
 
 **Remote Push**:
 1. VCS > Git > Push
