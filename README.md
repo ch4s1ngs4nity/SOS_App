@@ -297,6 +297,8 @@ The way git works is there is a local repository that you commit your changes to
 2. Click Login In with GitHub...
 3. Input your username, password and authenticator code when asked
     * You will need to be added as a contributor to the `SOScodeteam` with write permissions to the `SOS_App`
+4. You should see the local commits that have not been pushed to the remote repository
+5. Click Push
 
 ## Project Structure
 **Folders**
