@@ -17,8 +17,7 @@ class SubmitFeedbackScreen extends StatelessWidget {
               borderSide: new BorderSide(color: Colors.teal)),
           //hintText: 'Feedback',
           labelText: 'Feedback',
-          helperText: 'This feedback is not yet anonymous',
-          suffixStyle: const TextStyle(color: Colors.green)),
+          helperText: 'This feedback is not yet anonymous'),
     );
   }
 
@@ -26,11 +25,20 @@ class SubmitFeedbackScreen extends StatelessWidget {
     return RaisedButton(
         child: Text("Submit"),
         onPressed: () {
-          Get.dialog(
-            Center(child: CircularProgressIndicator()),
-            barrierDismissible: false,
-          );
-          Database().submitFeedback(feedbackController.text);
+          if (feedbackController.text.length >= 30){
+            Get.dialog(
+              Center(child: CircularProgressIndicator()),
+              barrierDismissible: false,
+            );
+            Database().submitFeedback(feedbackController.text);
+          } else {
+            //May need to debounce this... App slows if you spam submit in this case
+            Get.snackbar(
+              'Please tell us more',
+              'You wrote less than a tweet... (30 characters)',
+              snackPosition: SnackPosition.BOTTOM,
+            );
+          }
         });
   }
 

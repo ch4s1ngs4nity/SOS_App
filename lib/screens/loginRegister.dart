@@ -27,24 +27,18 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              SizedBox(height: 60),
               logoWidget(),
-              SizedBox(height: 2),
-              TextFormField(
-                decoration: InputDecoration(hintText: "Email"),
-                controller: emailController,
-              ),
+              SizedBox(height: 20),
+              textField('Email', emailController),
               SizedBox(
-                height: 2,
+                height: 10,
               ),
-              TextFormField(
-                decoration: InputDecoration(hintText: "Password"),
-                controller: passwordController,
-                obscureText: true,
-              ),
+              textField('Password', passwordController),
               RaisedButton(
                 child: Text(type), //Write the button with the type passed
                 onPressed: () {
@@ -56,12 +50,10 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
                   //Determine what to do when the button is clicked based on the type passed
                   if (type == 'Register') {
                     //controller is how we access the binded AuthController
-                    controller.createUser(
-                        emailController.text, passwordController.text);
+                    controller.createUser(emailController.text, passwordController.text);
                   } else {
                     //controller is how we access the binded AuthController
-                    controller.login(
-                        emailController.text, passwordController.text);
+                    controller.login(emailController.text, passwordController.text);
                   }
                 },
               ),
@@ -71,4 +63,14 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
       ),
     );
   }
+}
+
+Widget textField(String label, TextEditingController controller){
+  return TextFormField(
+    decoration: new InputDecoration(
+        border: new OutlineInputBorder(borderSide: new BorderSide(color: Colors.teal)),
+        labelText: label),
+    controller: controller,
+    obscureText: true,
+  );
 }

@@ -6,8 +6,7 @@ import 'package:sos_app/constants.dart' as constant;
 
 class AuthController extends GetxController {
   FirebaseAuth _auth = FirebaseAuth.instance; //Entry into firebase auth
-  Rx<FirebaseUser> _firebaseUser =
-      Rx<FirebaseUser>(); //Observable firebase user object
+  Rx<FirebaseUser> _firebaseUser = Rx<FirebaseUser>(); //Observable firebase user object
 
   String get email => _firebaseUser.value?.email; //This will automatically be updated as the auth state changes
   String get uid => _firebaseUser.value?.uid; //This will automatically be update as the auth state changes
@@ -35,7 +34,7 @@ class AuthController extends GetxController {
       Get.offAllNamed(constant.Route.root); //Re check if the user is authenticated
     } catch (e) {
       Get.back(); //Closes the loading progress circle
-      inform(e, "Error creating account");
+      inform("Error creating account", e);
     }
   }
 
@@ -49,7 +48,7 @@ class AuthController extends GetxController {
       Get.offAllNamed(constant.Route.root); //Re check if the user is authenticated
     } catch (e) {
       Get.back(); //Closes the loading progress circle
-      inform(e, "Error signing in");
+      inform("Error signing in", e);
     }
   }
 
@@ -62,7 +61,7 @@ class AuthController extends GetxController {
       Get.offAllNamed(constant.Route.root); //Re check if the user is authenticated
     } catch (e) {
       Get.back();
-      inform(e, "Error signing out");
+      inform("Error signing out", e);
     }
   }
 }
@@ -70,12 +69,12 @@ class AuthController extends GetxController {
 /*
 If errors occur, display them in a nice format
  */
-void inform(e, String msg) {
+void inform(String title, e) {
   bool isError = e is Error;
   String data = isError ? e.message : e;
 
   Get.snackbar(
-    msg,
+    title,
     data,
     snackPosition: SnackPosition.BOTTOM,
   );

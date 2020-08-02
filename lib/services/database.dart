@@ -17,7 +17,7 @@ class Database {
       });
       return true;
     } catch (e) {
-      inform(e, "Error writing user to firestore");
+      inform("Error writing user to firestore", e);
       return false;
     }
   }
@@ -28,18 +28,33 @@ class Database {
   Future<bool> submitFeedback(String data) async {
     try {
       await _firestore.collection("feedback").document().setData({
-        "user": null,
-        "email": null,
+        "user": null, //Need to integrate the userModel
+        "email": null, //Need to integrate the userModel
         "feedback": data,
       });
       Get.offAllNamed(constant.Route.home);
-      inform('Thank you for making SOS better', 'Feedback Submitted');
+      inform('Feedback Submitted', 'Thank you for making SOS better');
       return true;
     } catch (e) {
-      inform(e, "Error writing user to firestore");
+      inform("Error writing user to firestore", e);
       return false;
     }
   }
+
+  /*
+
+   */
+  Future <QuerySnapshot> readFeedback() async {
+    try {
+      QuerySnapshot _doc = await _firestore.collection("feedback").getDocuments();
+
+      return _doc;
+    } catch (e) {
+      inform("Error reading feedback from firestore", e);
+      rethrow;
+    }
+  }
+
 
   /*
   Takes a userID and returns a UserModel if that userID exists in the database
@@ -51,7 +66,7 @@ class Database {
 
       return UserModel.fromDocumentSnapshot(documentSnapshot: _doc);
     } catch (e) {
-      inform(e, "Error reading user from firestore");
+      inform("Error reading user from firestore", e);
       rethrow;
     }
   }
@@ -60,12 +75,12 @@ class Database {
 /*
 If errors occur, display them in a nice format
  */
-void inform(e, String msg) {
+void inform(String title, e) {
   bool isError = e is Error;
   String data = isError ? e.message : e;
 
   Get.snackbar(
-    msg,
+    title,
     data,
     snackPosition: SnackPosition.BOTTOM,
   );
