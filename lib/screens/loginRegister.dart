@@ -38,7 +38,7 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
               SizedBox(
                 height: 10,
               ),
-              textField('Password', passwordController),
+              textField('Password', passwordController, obscure: true),
               RaisedButton(
                 child: Text(type), //Write the button with the type passed
                 onPressed: () {
@@ -50,10 +50,12 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
                   //Determine what to do when the button is clicked based on the type passed
                   if (type == 'Register') {
                     //controller is how we access the binded AuthController
-                    controller.createUser(emailController.text, passwordController.text);
+                    controller.createUser(
+                        emailController.text, passwordController.text);
                   } else {
                     //controller is how we access the binded AuthController
-                    controller.login(emailController.text, passwordController.text);
+                    controller.login(
+                        emailController.text, passwordController.text);
                   }
                 },
               ),
@@ -65,12 +67,14 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
   }
 }
 
-Widget textField(String label, TextEditingController controller){
+Widget textField(String label, TextEditingController controller,
+    {bool obscure = false}) {
   return TextFormField(
     decoration: new InputDecoration(
-        border: new OutlineInputBorder(borderSide: new BorderSide(color: Colors.teal)),
+        border: new OutlineInputBorder(
+            borderSide: new BorderSide(color: Colors.teal)),
         labelText: label),
     controller: controller,
-    obscureText: true,
+    obscureText: obscure,
   );
 }

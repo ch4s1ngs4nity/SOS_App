@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 
-class UserModel {
+class UserModel extends GetxController {
   String id;
   String email;
 
   /*
-  This is a generic constructor =
+  This is a generic constructor
    */
   UserModel({this.id, this.email});
 

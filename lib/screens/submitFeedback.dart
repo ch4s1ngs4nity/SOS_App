@@ -17,7 +17,7 @@ class SubmitFeedbackScreen extends StatelessWidget {
               borderSide: new BorderSide(color: Colors.teal)),
           //hintText: 'Feedback',
           labelText: 'Feedback',
-          helperText: 'This feedback is not yet anonymous'),
+          helperText: 'This feedback is not anonymous'),
     );
   }
 

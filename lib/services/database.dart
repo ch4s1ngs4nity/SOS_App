@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:sos_app/models/user.dart';
 import 'package:sos_app/constants.dart' as constant;
+import 'package:sos_app/services/auth.dart';
 
 class Database {
   final Firestore _firestore = Firestore.instance; //Entry point to the firebase database
@@ -26,10 +27,14 @@ class Database {
   Writes feedback to the database
    */
   Future<bool> submitFeedback(String data) async {
+
+    AuthController authController = Get.put(AuthController());
+
     try {
       await _firestore.collection("feedback").document().setData({
-        "user": null, //Need to integrate the userModel
-        "email": null, //Need to integrate the userModel
+        "timestamp": new Timestamp.now(),
+        "uid": authController.uid, //Need to integrate the userModel
+        "email": authController.email, //Need to integrate the userModel
         "feedback": data,
       });
       Get.offAllNamed(constant.Route.home);
@@ -46,7 +51,7 @@ class Database {
    */
   Future <QuerySnapshot> readFeedback() async {
     try {
-      QuerySnapshot _doc = await _firestore.collection("feedback").getDocuments();
+      QuerySnapshot _doc = await _firestore.collection("feedback").orderBy('timestamp', descending: true).getDocuments();
 
       return _doc;
     } catch (e) {

@@ -1,20 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sos_app/services/database.dart';
 
 class FeedbackController extends GetxController{
   List<DocumentSnapshot> items = <DocumentSnapshot>[];
 
-  refreshFeedback() async {
+  Future<void> refreshFeedback() async {
     await Database().readFeedback().then((QuerySnapshot snapshot) {
       items = snapshot.documents;
-      print(items);
       update();
     });
   }
 
   Future<void> pullToRefresh() async{
-    refreshFeedback();
+    Get.dialog(
+      Center(child: CircularProgressIndicator()),
+      barrierDismissible: false,
+    );
+
+    await refreshFeedback();
+
+    Get.back();
+  }
+
+  void log(){
+    items.forEach((element) {print(element.data);});
   }
 
   @override
