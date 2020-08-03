@@ -10,7 +10,7 @@ class Route {
   static const String viewFeedback = "/viewFeedback";
   static const String profile = "/profile";
   static const String logout =
-      "/logout"; //Pseudo route, controls an action not a screen navigation
+      "/logout"; //Pseudo route, controls an action in the drawer not a screen navigation
 }
 
 class Image {
