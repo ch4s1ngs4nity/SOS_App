@@ -34,11 +34,26 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
               SizedBox(height: 60),
               logoWidget(),
               SizedBox(height: 20),
-              textField('Email', emailController),
+          TextFormField(
+            autofocus: true,
+            decoration: new InputDecoration(
+                border: new OutlineInputBorder(
+                    borderSide: new BorderSide(color: Colors.teal)),
+                labelText: 'Email'),
+            controller: emailController,
+              onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+          ),
               SizedBox(
                 height: 10,
               ),
-              textField('Password', passwordController, obscure: true),
+              TextFormField(
+                decoration: new InputDecoration(
+                    border: new OutlineInputBorder(
+                        borderSide: new BorderSide(color: Colors.teal)),
+                    labelText: 'Password'),
+                controller: passwordController,
+                obscureText: true,
+              ),
               RaisedButton(
                 child: Text(type), //Write the button with the type passed
                 onPressed: () {
@@ -65,16 +80,4 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
       ),
     );
   }
-}
-
-Widget textField(String label, TextEditingController controller,
-    {bool obscure = false}) {
-  return TextFormField(
-    decoration: new InputDecoration(
-        border: new OutlineInputBorder(
-            borderSide: new BorderSide(color: Colors.teal)),
-        labelText: label),
-    controller: controller,
-    obscureText: obscure,
-  );
 }

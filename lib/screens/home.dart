@@ -6,7 +6,7 @@ class HomeScreen extends StatelessWidget {
   Widget buildScreen() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20.0, 20.0, 0.0, 0.0),
-      child: new Text("Home"),
+      child: new Text("Welcome to the SOS Feedback App"),
     );
   }
 

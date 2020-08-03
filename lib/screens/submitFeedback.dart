@@ -10,6 +10,7 @@ class SubmitFeedbackScreen extends StatelessWidget {
 
   Widget textBox() {
     return new TextField(
+      autofocus: true,
       maxLines: 12,
       controller: feedbackController,
       decoration: new InputDecoration(
