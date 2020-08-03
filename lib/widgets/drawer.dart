@@ -18,6 +18,7 @@ class AppDrawer extends GetWidget<AuthController> {
         child: Column(
       children: <Widget>[
         UserAccountsDrawerHeader(
+          accountName: Text(controller.uid),
           accountEmail: Text(controller.email),
           //Using the binded AuthController to get the current user email
           currentAccountPicture: CircleAvatar(
@@ -94,7 +95,7 @@ class AppDrawer extends GetWidget<AuthController> {
       );
       controller.signOut();
     } else {
-      Get.offAndToNamed(target);
+      Get.offAllNamed(target); //Remove all previous routes and navigate to new route.
     }
   }
 }

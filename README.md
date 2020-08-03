@@ -349,5 +349,10 @@ To manage the database open the [Firebase Console](https://console.firebase.goog
 The login details to this account are pinned to the general channel of our development Slack.
 
 If you need to make changes to how the App links to our Firebase account use the following: [Add Firebase to Flutter](https://firebase.google.com/docs/flutter/setup)
-  
+
+**App Performance**
+If you are running the debug build of the flutter app the performance is going to suffer.
+To accurately gauge how the app performs please run `flutter -run --release`
+This will build a fully optimized version of the app.
+
 [Top](#sos_app)
