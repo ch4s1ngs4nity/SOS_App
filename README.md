@@ -353,7 +353,9 @@ If you need to make changes to how the App links to our Firebase account use the
 
 **App Performance**
 If you are running the debug build of the flutter app the performance is going to suffer.  To accurately gauge how the app performs please run
+
 `flutter run --release`
+
 This will build a fully optimized version of the app. Additionally physical devices usually perform better than the simulator.
 
 [Top](#sos_app)

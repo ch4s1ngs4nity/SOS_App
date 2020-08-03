@@ -84,16 +84,18 @@ class AppDrawer extends GetWidget<AuthController> {
     //Don't do anything if someone clicks on the location we are at
     if (this.currentPage == target) {
       Get.back(); //Closes drawer
-      return;
+      return; //Don't process anything more code in this method
     }
 
     //Check for the special route of logout otherwise navigate to the passed route
     if (target == constant.Route.logout) {
+      //Show loading spinner
       Get.dialog(
         Center(child: CircularProgressIndicator()),
         barrierDismissible: false,
       );
-      controller.signOut();
+
+      controller.signOut(); //Signout out of firebase authentication
     } else {
       Get.offAllNamed(target); //Remove all previous routes and navigate to new route.
     }

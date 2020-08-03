@@ -7,20 +7,20 @@ import 'package:sos_app/constants.dart' as constant;
 FeedbackController controller = Get.put(FeedbackController());
 
 Widget list() {
-  controller.refreshFeedback();
+  controller.refreshFeedback(); //Possibly redundant since the FeedbackController initializes itself.
   return GetBuilder<FeedbackController>(
       init: FeedbackController(),
       builder: (_) => ListView.separated(
-          separatorBuilder: (context, index) => Divider(
+          separatorBuilder: (context, index) => Divider( //This builds space between each feedback bubble
             color: Colors.transparent,
             height: 3,
           ),
           itemCount: controller.items.length,
           itemBuilder: (context, index) {
-            return Card(
+            return Card( //The white bubbles the feedback are inside
                 child: ListTile(
                     leading: Icon(Icons.question_answer),
-                    title: new RichText(
+                    title: new RichText( //Allows styled text within the same text area
                       text: new TextSpan(
                         style: new TextStyle(
                           fontSize: 14.0,
@@ -44,7 +44,7 @@ class ViewFeedbackScreen extends StatelessWidget {
       appBar: new AppBar(title: new Text('View Feedback')),
       drawer: AppDrawer(constant.Route.viewFeedback),
       body: RefreshIndicator(
-          child: list(), onRefresh: controller.refreshFeedback),
+          child: list(), onRefresh: controller.refreshFeedback), //onRefresh is what adds the pull down to refresh capability
     );
   }
 }

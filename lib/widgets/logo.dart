@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sos_app/constants.dart' as constant;
 
+/*
+Draws the large SOS logo for use through the app
+ */
 Widget logoWidget() {
   return new Hero(
       tag: 'logo',

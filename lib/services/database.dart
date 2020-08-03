@@ -47,7 +47,8 @@ class Database {
   }
 
   /*
-
+  Requests all feedback documents from the database and sorts them in descending order by timestamp.
+  Newest feedback will be on top on the viewFeedback page.
    */
   Future <QuerySnapshot> readFeedback() async {
     try {
