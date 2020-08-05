@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sos_app/services/auth.dart';
 import 'package:sos_app/widgets/logo.dart';
+import 'package:sos_app/constants.dart' as constant;
 
 class LoginRegisterScreen extends GetWidget<AuthController> {
   //Passing the binded AuthController so we can use it below
@@ -40,6 +42,7 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
                 border: new OutlineInputBorder(
                     borderSide: new BorderSide(color: Colors.teal)),
                 labelText: 'Email'),
+            inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.emailSize)],
             controller: emailController,
               onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
           ),
@@ -51,6 +54,7 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
                     border: new OutlineInputBorder(
                         borderSide: new BorderSide(color: Colors.teal)),
                     labelText: 'Password'),
+                inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.passwordSize)],
                 controller: passwordController,
                 obscureText: true,
               ),

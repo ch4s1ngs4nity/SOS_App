@@ -18,7 +18,7 @@ class AppDrawer extends GetWidget<AuthController> {
         child: Column(
       children: <Widget>[
         UserAccountsDrawerHeader(
-          accountName: Text(controller.uid),
+          accountName: Text(controller.userModel.getNameOrUID()),
           accountEmail: Text(controller.email),
           //Using the binded AuthController to get the current user email
           currentAccountPicture: CircleAvatar(

@@ -16,3 +16,10 @@ class Route {
 class Image {
   static const String logo = "assets/images/SOS_Shield.png";
 }
+
+class Limit {
+  static const int passwordSize = 128;
+  static const int emailSize = 35;
+  static const int nameSize = 35;
+  static const int flightSize = 4;
+}

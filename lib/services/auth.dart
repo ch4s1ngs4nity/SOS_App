@@ -7,15 +7,42 @@ import 'package:sos_app/constants.dart' as constant;
 class AuthController extends GetxController {
   FirebaseAuth _auth = FirebaseAuth.instance; //Entry into firebase auth
   Rx<FirebaseUser> _firebaseUser = Rx<FirebaseUser>(); //Observable firebase user object
+  UserModel userModel; //Stores the more detailed user info
 
   String get email => _firebaseUser.value?.email; //This will automatically be updated as the auth state changes
   String get uid => _firebaseUser.value?.uid; //This will automatically be update as the auth state changes
 
   @override
-  onInit() {
+  onInit() async {
     //This binds the user object to auth state changes.
     //As the auth state changes the firebase user will now reflect those changes
     _firebaseUser.bindStream(_auth.onAuthStateChanged);
+
+    /*
+    There is no event fired if a user is auto-logged in but we can wait for the currentUser to resolve and check for a uid.
+    If we get a uid and have no UserModel we no the auto-login occurred.
+    We can then load the corresponding UserModel from the database with the uid.
+     */
+    await _auth.currentUser();
+    if (userModel == null && uid != null){
+      var tempUser = await Database().readUser(uid);
+      this.userModel = tempUser;
+    }
+  }
+
+  /*
+  Updates the user model after determining the usermodel exists.
+   */
+  void updateUser(String name, String flight) async{
+    try {
+      await userModel.updateData(name, flight);
+
+      Get.back(); //Closes the loading progress circle
+      inform("Success!", "Profile updated");
+    } catch(e){
+      Get.back(); //Closes the loading progress circle
+      inform("Error updating profile", e);
+    }
   }
 
   /*
@@ -28,8 +55,8 @@ class AuthController extends GetxController {
           email: email.trim(), password: password);
 
       //Saving the user to the firestore database
-      UserModel user = UserModel(id: this.uid, email: this.email);
-      await Database().writeUser(user);
+      this.userModel = UserModel(uid: this.uid, email: this.email);
+      await Database().writeUser(this.userModel);
 
       Get.offAllNamed(constant.Route.root); //Re check if the user is authenticated
     } catch (e) {
@@ -45,6 +72,9 @@ class AuthController extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(
           email: email.trim(), password: password);
+      var tempUser = await Database().readUser(uid);
+      this.userModel = tempUser;
+
       Get.offAllNamed(constant.Route.root); //Re check if the user is authenticated
     } catch (e) {
       Get.back(); //Closes the loading progress circle

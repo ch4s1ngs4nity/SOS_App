@@ -12,9 +12,11 @@ class Database {
    */
   Future<bool> writeUser(UserModel user) async {
     try {
-      await _firestore.collection("users").document(user.id).setData({
-        "id": user.id,
+      await _firestore.collection("users").document(user.uid).setData({
+        "id": user.uid,
         "email": user.email,
+        "name": user.name,
+        "flight": user.flight
       });
       return true;
     } catch (e) {
@@ -36,6 +38,8 @@ class Database {
         "uid": authController.uid, //Need to integrate the userModel
         "email": authController.email, //Need to integrate the userModel
         "feedback": data,
+        "name": authController.userModel.name,
+        "flight": authController.userModel.flight
       });
       Get.offAllNamed(constant.Route.home);
       inform('Feedback Submitted', 'Thank you for making SOS better');

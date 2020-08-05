@@ -344,6 +344,7 @@ The way git works is there is a local repository (your computer) that you commit
    - Paste the readme into the left and a preview is shown on the right
 
 **Firebase**
+
 Firebase is the authentication and database back-end for this application.
 
 To manage the database open the [Firebase Console](https://console.firebase.google.com/u/0/) and sign in with the SOS Firebase account.
@@ -352,6 +353,7 @@ The login details to this account are pinned to the general channel of our devel
 If you need to make changes to how the App links to our Firebase account use the following: [Add Firebase to Flutter](https://firebase.google.com/docs/flutter/setup)
 
 **App Performance**
+
 If you are running the debug build of the flutter app the performance is going to suffer.  To accurately gauge how the app performs please run
 
 `flutter run --release`
