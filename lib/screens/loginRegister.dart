@@ -24,11 +24,11 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(type), //Write the app heading with the type passed
-      ),
-      body: Center(
-        child: Padding(
+        appBar: AppBar(
+          title: Text(type), //Write the app heading with the type passed
+        ),
+        body: Center(
+            child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -36,16 +36,18 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
               SizedBox(height: 60),
               logoWidget(),
               SizedBox(height: 20),
-          TextFormField(
-            autofocus: true,
-            decoration: new InputDecoration(
-                border: new OutlineInputBorder(
-                    borderSide: new BorderSide(color: Colors.teal)),
-                labelText: 'Email'),
-            inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.emailMaxSize)],
-            controller: emailController,
-              onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
-          ),
+              TextFormField(
+                autofocus: true,
+                decoration: new InputDecoration(
+                    border: new OutlineInputBorder(
+                        borderSide: new BorderSide(color: Colors.teal)),
+                    labelText: 'Email'),
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(constant.Limit.emailMaxSize)
+                ],
+                controller: emailController,
+                onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -54,7 +56,10 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
                     border: new OutlineInputBorder(
                         borderSide: new BorderSide(color: Colors.teal)),
                     labelText: 'Password'),
-                inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.passwordMaxSize)],
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(
+                      constant.Limit.passwordMaxSize)
+                ],
                 controller: passwordController,
                 obscureText: true,
               ),
@@ -80,8 +85,6 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
               ),
             ],
           ),
-        ),
-      ),
-    );
+        )));
   }
 }

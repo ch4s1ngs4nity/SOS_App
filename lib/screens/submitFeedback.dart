@@ -11,9 +11,11 @@ class SubmitFeedbackScreen extends StatelessWidget {
       TextEditingController(); //Controls state for feedback
 
   Widget textBox() {
-    return new TextField(
+    return new TextFormField(
       autofocus: true,
       maxLines: 12,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.done,
       maxLength: constant.Limit.feedbackMaxSize,
       controller: feedbackController,
       decoration: new InputDecoration(
