@@ -21,5 +21,7 @@ class Limit {
   static const int passwordSize = 128;
   static const int emailSize = 35;
   static const int nameSize = 35;
-  static const int flightSize = 4;
+  static const int flightSize = 3;
+  static const int feedbackSize = 3500;
+  static const int minFeedbackSize = 30;
 }

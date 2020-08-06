@@ -28,19 +28,31 @@ class Database {
   /*
   Writes feedback to the database
    */
-  Future<bool> submitFeedback(String data) async {
+  Future<bool> submitFeedback(String data, bool isAnon) async {
 
     AuthController authController = Get.put(AuthController());
 
     try {
-      await _firestore.collection("feedback").document().setData({
-        "timestamp": new Timestamp.now(),
-        "uid": authController.uid, //Need to integrate the userModel
-        "email": authController.email, //Need to integrate the userModel
-        "feedback": data,
-        "name": authController.userModel.name,
-        "flight": authController.userModel.flight
-      });
+      if (isAnon){
+        await _firestore.collection("feedback").document().setData({
+          "timestamp": new Timestamp.now(),
+          "uid": null, //Need to integrate the userModel
+          "email": null, //Need to integrate the userModel
+          "feedback": data,
+          "name": "Anonymous",
+          "flight": null
+        });
+      }else {
+        await _firestore.collection("feedback").document().setData({
+          "timestamp": new Timestamp.now(),
+          "uid": authController.uid,
+          "email": authController.email,
+          "feedback": data,
+          "name": authController.userModel.name,
+          "flight": authController.userModel.flight
+        });
+      }
+
       Get.offAllNamed(constant.Route.home);
       inform('Feedback Submitted', 'Thank you for making SOS better');
       return true;

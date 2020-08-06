@@ -89,15 +89,36 @@ class AppDrawer extends GetWidget<AuthController> {
 
     //Check for the special route of logout otherwise navigate to the passed route
     if (target == constant.Route.logout) {
-      //Show loading spinner
-      Get.dialog(
-        Center(child: CircularProgressIndicator()),
-        barrierDismissible: false,
+      Get.defaultDialog(
+        title: "",
+        middleText: "Are you sure?",
+        actions: [
+          new FlatButton(
+            color: Colors.red[100],
+            child: const Text("Logout"),
+            onPressed: doLogout,
+          ),
+          new FlatButton(
+            color: Colors.blue[100],
+            child: const Text("Cancel"),
+            onPressed: Get.back,
+          ),
+        ],
       );
 
-      controller.signOut(); //Signout out of firebase authentication
     } else {
       Get.offAllNamed(target); //Remove all previous routes and navigate to new route.
     }
   }
+
+  void doLogout(){
+    //Show loading spinner
+    Get.dialog(
+      Center(child: CircularProgressIndicator()),
+      barrierDismissible: false,
+    );
+
+    controller.signOut(); //Signout out of firebase authentication
+  }
 }
+

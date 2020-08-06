@@ -4,6 +4,8 @@ import 'package:sos_app/widgets/drawer.dart';
 import 'package:sos_app/constants.dart' as constant;
 import 'package:sos_app/services/database.dart';
 
+bool isAnon = false;
+
 class SubmitFeedbackScreen extends StatelessWidget {
   final TextEditingController feedbackController =
       TextEditingController(); //Controls state for feedback
@@ -12,13 +14,14 @@ class SubmitFeedbackScreen extends StatelessWidget {
     return new TextField(
       autofocus: true,
       maxLines: 12,
+      maxLength: constant.Limit.feedbackSize,
       controller: feedbackController,
       decoration: new InputDecoration(
           border: new OutlineInputBorder(
               borderSide: new BorderSide(color: Colors.teal)),
           //hintText: 'Feedback',
           labelText: 'Feedback',
-          helperText: 'This feedback is not anonymous'),
+          helperText: ''),
     );
   }
 
@@ -26,17 +29,17 @@ class SubmitFeedbackScreen extends StatelessWidget {
     return RaisedButton(
         child: Text("Submit"),
         onPressed: () {
-          if (feedbackController.text.length >= 30){
+          if (feedbackController.text.length >= constant.Limit.minFeedbackSize) {
             Get.dialog(
               Center(child: CircularProgressIndicator()),
               barrierDismissible: false,
             );
-            Database().submitFeedback(feedbackController.text);
+            Database().submitFeedback(feedbackController.text, isAnon);
           } else {
             //May need to debounce this... App slows if you spam submit in this case
             Get.snackbar(
               'Please tell us more',
-              'You wrote less than a tweet... (30 characters)',
+              'You wrote less than a tweet... (${constant.Limit.minFeedbackSize} characters)',
               snackPosition: SnackPosition.BOTTOM,
             );
           }
@@ -56,11 +59,39 @@ class SubmitFeedbackScreen extends StatelessWidget {
             children: <Widget>[
               textBox(),
               SizedBox(height: 10),
+              SwitchButton(),
               submitButton()
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class SwitchButton extends StatefulWidget {
+  SwitchButton({Key key}) : super(key: key);
+
+  @override
+  _SwitchButtonState createState() => _SwitchButtonState();
+}
+
+class _SwitchButtonState extends State<SwitchButton> {
+  bool switchStatus = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        child: SwitchListTile(
+      title: Text((switchStatus) ? 'Anonymous Feedback' : 'Public Feedback'),
+      value: switchStatus,
+      onChanged: (bool value) {
+        isAnon = value;
+        setState(() {
+          switchStatus = value;
+        });
+      },
+      secondary: Icon((switchStatus) ? Icons.visibility_off : Icons.visibility),
+    ));
   }
 }

@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
       drawer: AppDrawer(constant.Route.home),
       body: Stack(
         children: <Widget>[
-          buildScreen(),
+          buildScreen()
         ],
       ),
     );

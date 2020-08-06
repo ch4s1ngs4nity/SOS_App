@@ -9,6 +9,8 @@ class ProfileScreen extends GetWidget<AuthController> {
   //Passing the binded AuthController so we can use it below
   final TextEditingController nameController = TextEditingController(); //Controls state for name
   final TextEditingController flightController = TextEditingController(); //Controls state for flight
+  final TextEditingController emailController = TextEditingController(); //Controls state for email
+  final TextEditingController uidController = TextEditingController(); //Controls state for uid
 
   Widget buildScreen() {
     return Padding(
@@ -37,6 +39,34 @@ class ProfileScreen extends GetWidget<AuthController> {
             inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.flightSize)], //Limit the field to 4 characters (eg. F065)
             controller: flightController..text = controller.userModel.flight, //This sets the controller and specifies the initial value for the field
           ),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+            style: TextStyle(
+                color: Colors.grey
+            ),
+            decoration: new InputDecoration(
+                border: new OutlineInputBorder(
+                    borderSide: new BorderSide(color: Colors.teal)),
+                labelText: 'Email'),
+            controller: emailController..text = controller.userModel.email, //This sets the controller and specifies the initial value for the field
+            enabled: false,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+            style: TextStyle(
+              color: Colors.grey
+            ),
+            decoration: new InputDecoration(
+                border: new OutlineInputBorder(
+                    borderSide: new BorderSide(color: Colors.teal)),
+                labelText: 'uid'),
+            controller: uidController..text = controller.userModel.uid, //This sets the controller and specifies the initial value for the field
+            enabled: false,
+          ),
           RaisedButton(
             child: Text('Update'), //Write the button with the type passed
             onPressed: () async {
@@ -44,9 +74,7 @@ class ProfileScreen extends GetWidget<AuthController> {
                 Center(child: CircularProgressIndicator()),
                 barrierDismissible: false,
               );
-
-             controller.updateUser(nameController.text, flightController.text);
-
+              controller.updateUser(nameController.text.trim(), flightController.text.trim());
             },
           ),
         ],

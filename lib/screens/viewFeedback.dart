@@ -21,7 +21,7 @@ Widget list() {
           itemBuilder: (context, index) {
             return Card( //The white bubbles the feedback are inside
                 child: ListTile(
-                    leading: Icon(Icons.question_answer),
+                    leading: Icon((controller.items[index].data['uid'] != null ) ? Icons.question_answer : Icons.visibility_off),
                     title: new RichText( //Allows styled text within the same text area
                       text: new TextSpan(
                         style: new TextStyle(
@@ -31,7 +31,7 @@ Widget list() {
                         children: <TextSpan>[
                           new TextSpan(text: '${getAorB(index, 'name', 'email')}${getText(index, 'flight', ' :: ')}', style: new TextStyle(fontWeight: FontWeight.bold)),
                           new TextSpan(text: '\n${getText(index, 'email')} ${getText(index, 'uid', ' / ')}\n\n', style: new TextStyle(fontSize: 9, color: Colors.grey)),
-                          new TextSpan(text: '${controller.items[index].data['feedback']}'),
+                          new TextSpan(text: '${getText(index, 'feedback')}'),
                         ],
                       ),
                     )
