@@ -75,11 +75,11 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
                   if (type == 'Register') {
                     //controller is how we access the binded AuthController
                     controller.createUser(
-                        emailController.text, passwordController.text);
+                        emailController.text.trim(), passwordController.text.trim());
                   } else {
                     //controller is how we access the binded AuthController
                     controller.login(
-                        emailController.text, passwordController.text);
+                        emailController.text.trim(), passwordController.text.trim());
                   }
                 },
               ),

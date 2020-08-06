@@ -31,12 +31,12 @@ class SubmitFeedbackScreen extends StatelessWidget {
     return RaisedButton(
         child: Text("Submit"),
         onPressed: () {
-          if (feedbackController.text.length >= constant.Limit.feedbackMinSize) {
+          if (feedbackController.text.trim().length >= constant.Limit.feedbackMinSize) {
             Get.dialog(
               Center(child: CircularProgressIndicator()),
               barrierDismissible: false,
             );
-            Database().submitFeedback(feedbackController.text, isAnon);
+            Database().submitFeedback(feedbackController.text.trim(), isAnon);
           } else {
             //May need to debounce this... App slows if you spam submit in this case
             Get.snackbar(
