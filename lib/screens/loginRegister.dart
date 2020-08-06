@@ -42,7 +42,7 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
                 border: new OutlineInputBorder(
                     borderSide: new BorderSide(color: Colors.teal)),
                 labelText: 'Email'),
-            inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.emailSize)],
+            inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.emailMaxSize)],
             controller: emailController,
               onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
           ),
@@ -54,7 +54,7 @@ class LoginRegisterScreen extends GetWidget<AuthController> {
                     border: new OutlineInputBorder(
                         borderSide: new BorderSide(color: Colors.teal)),
                     labelText: 'Password'),
-                inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.passwordSize)],
+                inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.passwordMaxSize)],
                 controller: passwordController,
                 obscureText: true,
               ),

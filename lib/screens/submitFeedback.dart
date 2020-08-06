@@ -14,7 +14,7 @@ class SubmitFeedbackScreen extends StatelessWidget {
     return new TextField(
       autofocus: true,
       maxLines: 12,
-      maxLength: constant.Limit.feedbackSize,
+      maxLength: constant.Limit.feedbackMaxSize,
       controller: feedbackController,
       decoration: new InputDecoration(
           border: new OutlineInputBorder(
@@ -29,7 +29,7 @@ class SubmitFeedbackScreen extends StatelessWidget {
     return RaisedButton(
         child: Text("Submit"),
         onPressed: () {
-          if (feedbackController.text.length >= constant.Limit.minFeedbackSize) {
+          if (feedbackController.text.length >= constant.Limit.feedbackMinSize) {
             Get.dialog(
               Center(child: CircularProgressIndicator()),
               barrierDismissible: false,
@@ -39,7 +39,7 @@ class SubmitFeedbackScreen extends StatelessWidget {
             //May need to debounce this... App slows if you spam submit in this case
             Get.snackbar(
               'Please tell us more',
-              'You wrote less than a tweet... (${constant.Limit.minFeedbackSize} characters)',
+              'You wrote less than a tweet... (${constant.Limit.feedbackMinSize} characters)',
               snackPosition: SnackPosition.BOTTOM,
             );
           }

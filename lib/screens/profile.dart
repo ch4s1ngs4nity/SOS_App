@@ -24,7 +24,7 @@ class ProfileScreen extends GetWidget<AuthController> {
                 border: new OutlineInputBorder(
                     borderSide: new BorderSide(color: Colors.teal)),
                 labelText: 'Name'),
-            inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.nameSize)], //How long of a name do we need lol
+            inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.nameMaxSize)], //How long of a name do we need lol
             controller: nameController..text = controller.userModel.name, //This sets the controller and specifies the initial value for the field
             //controller: nameController..text is the equivalent of controller: nameController and then specifying nameController.text = '';
           ),
@@ -36,7 +36,7 @@ class ProfileScreen extends GetWidget<AuthController> {
                 border: new OutlineInputBorder(
                     borderSide: new BorderSide(color: Colors.teal)),
                 labelText: 'Flight'),
-            inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.flightSize)], //Limit the field to 4 characters (eg. F065)
+            inputFormatters: [LengthLimitingTextInputFormatter(constant.Limit.flightMaxSize)], //Limit the field to 4 characters (eg. F065)
             controller: flightController..text = controller.userModel.flight, //This sets the controller and specifies the initial value for the field
           ),
           SizedBox(

@@ -18,10 +18,10 @@ class Image {
 }
 
 class Limit {
-  static const int passwordSize = 128;
-  static const int emailSize = 35;
-  static const int nameSize = 35;
-  static const int flightSize = 3;
-  static const int feedbackSize = 3500;
-  static const int minFeedbackSize = 30;
+  static const int passwordMaxSize = 128;
+  static const int emailMaxSize = 35;
+  static const int nameMaxSize = 35;
+  static const int flightMaxSize = 3;
+  static const int feedbackMaxSize = 3500;
+  static const int feedbackMinSize = 30;
 }
