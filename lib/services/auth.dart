@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sos_app/models/user.dart';
 import 'package:sos_app/services/database.dart';
@@ -100,7 +101,7 @@ class AuthController extends GetxController {
 If errors occur, display them in a nice format
  */
 void inform(String title, e) {
-  bool isError = e is Error; //Is the message an instance of the Error class?
+  bool isError = e is Error || e is PlatformException; //Is the message an instance of the Error or PlatformException class?
   String data = isError ? e.message : e; //Either use the string passed on e or access the message the e  Error object contains
 
   Get.snackbar(

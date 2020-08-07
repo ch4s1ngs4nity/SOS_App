@@ -31,7 +31,8 @@ class SubmitFeedbackScreen extends StatelessWidget {
     return RaisedButton(
         child: Text("Submit"),
         onPressed: () {
-          if (feedbackController.text.trim().length >= constant.Limit.feedbackMinSize) {
+          if (feedbackController.text.trim().length >=
+              constant.Limit.feedbackMinSize) {
             Get.dialog(
               Center(child: CircularProgressIndicator()),
               barrierDismissible: false,
