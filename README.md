@@ -22,19 +22,20 @@ Dependency Reference:
 - [Flutter Launcher Icons](https://pub.dev/packages/flutter_launcher_icons)
 
 Table of Contents:
-- [Install Git](#install-git)
-- [Install Dart](#install-dart)
-- [Install Flutter](#install-flutter)
-- [Update Path Variable](#update-path-variable)
-- [Verify Path Variable](#verify-path-variable)
-- [Install Android Studio](#install-android-studio)
-- [Install Coca Pods](#install-coca-pods-macos-only)
-- [Verify Flutter Environment](#verify-flutter-environment)
-- [Clone the Repository](#clone-the-repository)
-- [Setup the Project in Android Studio](#setup-the-project-in-android-studio)
-- [Setup the Emulator](#setup-the-emulator)
-- [Save Changes to GitHub](#save-changes-to-github)
-- [Project Overview](#project-overview)
+- [SOS_App](#sos_app)
+  - [Install Git](#install-git)
+  - [Install Dart](#install-dart)
+  - [Install Flutter](#install-flutter)
+  - [Update Path Variable](#update-path-variable)
+  - [Verify Path Variable](#verify-path-variable)
+  - [Install Android Studio](#install-android-studio)
+  - [Install Coca Pods (MacOS Only)](#install-coca-pods-macos-only)
+  - [Verify Flutter Environment](#verify-flutter-environment)
+  - [Clone the Repository](#clone-the-repository)
+  - [Setup the Project in Android Studio](#setup-the-project-in-android-studio)
+  - [Setup the Emulator](#setup-the-emulator)
+  - [Save changes to GitHub](#save-changes-to-github)
+  - [Project Overview](#project-overview)
 
 ## Install Git
 Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
