@@ -209,7 +209,7 @@ Android Studio: https://developer.android.com/studio#downloads
 13. Click start
 14. Type `command`
 15. Click Command Prompt
-16. Type `flutter doctor –android-licenses`
+16. Type `flutter doctor --android-licenses`
 17. Press Enter
 18. You will have to type the letter `y` after each prompt and press Enter
 19. Type `flutter doctor`
